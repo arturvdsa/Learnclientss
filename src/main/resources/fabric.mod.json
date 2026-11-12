@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "id": "learnclient",
+  "version": "1.4.0",
+  "name": "LearnClient",
+  "description": "Учебный клиентский мод: система модулей.",
+  "environment": "client",
+  "mixins": ["learnclient.mixins.json"],
+  "entrypoints": { "client": ["com.example.learnclient.LearnClient"] },
+  "depends": {
+    "fabricloader": ">=0.18.0",
+    "minecraft": "~1.21.11",
+    "java": ">=21",
+    "fabric-api": "*"
+  }
+}

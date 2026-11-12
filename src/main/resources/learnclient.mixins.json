@@ -1,0 +1,7 @@
+{
+  "required": false,
+  "package": "com.example.learnclient.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "client": ["BlockMixin"],
+  "injectors": { "defaultRequire": 0 }
+}
