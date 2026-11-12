@@ -8,6 +8,7 @@ import java.util.Map;
 import org.lwjgl.glfw.GLFW;
 
 import com.example.learnclient.modules.*;
+import com.example.learnclient.modules.Module;
 
 public class ModuleManager {
     private final List<Module> modules = new ArrayList<>();
@@ -83,15 +84,3 @@ public class ModuleManager {
         }
         if (allowToggle) {
             for (Module m : modules) {
-                int k = m.getBind();
-                if (k >= 0 && cur.get(k) && !down.getOrDefault(k, false)) m.toggle();
-            }
-        }
-        down.clear();
-        down.putAll(cur);
-    }
-
-    public void tick() {
-        for (Module m : modules) if (m.isEnabled()) m.onTick();
-    }
-}
