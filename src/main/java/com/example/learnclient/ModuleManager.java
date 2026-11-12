@@ -82,5 +82,24 @@ public class ModuleManager {
             int k = m.getBind();
             if (k >= 0) cur.computeIfAbsent(k, kk -> GLFW.glfwGetKey(window, kk) == GLFW.GLFW_PRESS);
         }
-        if (allowToggle) {}
-            for (Module m : modules) {}
+        
+        if (allowToggle) {
+            for (Module m : modules) {
+                int k = m.getBind();
+                if (k >= 0) {
+                    boolean isPressed = cur.getOrDefault(k, false);
+                    boolean wasPressed = down.getOrDefault(k, false);
+                    
+                    // Если клавиша только что была нажата (а до этого не была)
+                    if (isPressed && !wasPressed) {
+                        m.toggle(); // Переключаем модуль
+                    }
+                }
+            }
+        }
+        
+        // Обновляем состояние клавиш для следующего тика
+        down.clear();
+        down.putAll(cur);
+    }
+}
