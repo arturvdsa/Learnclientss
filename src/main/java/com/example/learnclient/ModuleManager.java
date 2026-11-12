@@ -62,7 +62,6 @@ public class ModuleManager {
         return out;
     }
 
-    /** Найти модуль по имени: без регистра и без пробелов ("godmode", "esp", "fullbright"). */
     public Module find(String query) {
         String q = norm(query);
         if (q.isEmpty()) return null;
@@ -75,7 +74,6 @@ public class ModuleManager {
 
     private final Map<Integer, Boolean> down = new HashMap<>();
 
-    /** Опрос биндов. allowToggle = false, пока открыт экран (чат, GUI), чтобы клавиши не срабатывали при вводе. */
     public void pollBinds(long window, boolean allowToggle) {
         Map<Integer, Boolean> cur = new HashMap<>();
         for (Module m : modules) {
@@ -89,17 +87,18 @@ public class ModuleManager {
                 if (k >= 0) {
                     boolean isPressed = cur.getOrDefault(k, false);
                     boolean wasPressed = down.getOrDefault(k, false);
-                    
-                    // Если клавиша только что была нажата (а до этого не была)
                     if (isPressed && !wasPressed) {
-                        m.toggle(); // Переключаем модуль
+                        m.toggle();
                     }
                 }
             }
         }
-        
-        // Обновляем состояние клавиш для следующего тика
         down.clear();
         down.putAll(cur);
     }
-}
+
+    // Пустышка, чтобы LearnClient.java не ругался
+    public void tick() {
+        // Если нужна логика каждый тик - пиши тут
+    }
+                }
