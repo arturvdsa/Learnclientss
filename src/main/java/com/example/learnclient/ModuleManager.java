@@ -83,4 +83,4 @@ public class ModuleManager {
             if (k >= 0) cur.computeIfAbsent(k, kk -> GLFW.glfwGetKey(window, kk) == GLFW.GLFW_PRESS);
         }
         if (allowToggle) {
-            for (Module m : modules) {
+            for (Module m : modules) {}
